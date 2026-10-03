@@ -1,6 +1,8 @@
 # KeySound FX
 
-A very simple macOS desktop application that plays a sound whenever a keyboard key is pressed. Inspired by my friend, who sent me a reel on instagram of someone implementing something similar to this for fun.
+A very simple macOS desktop application that plays a sound whenever a keyboard key is pressed.
+
+Inspired by a friend who sent me an Instagram reel of someone implementing something similar for fun.
 
 KeySound FX uses **Apple's Quartz Event Services** to listen for keyboard events and `afplay` to play the selected audio file.
 
@@ -8,20 +10,22 @@ KeySound FX uses **Apple's Quartz Event Services** to listen for keyboard events
 
 ---
 
+![KeySound FX](assets/screenshot.png)
+
 ##  Features
 
-*  Detects keyboard key presses using **Quartz**
-*  Plays a sound whenever a key is pressed
-*  Supports custom audio files
-*  Built-in file picker for choosing sounds
-*  `.wav` files are recommended for lower playback latency
-*  Emergency Stop button to immediately stop the listener and audio
-*  Checks for the required macOS Accessibility permission
-*  Simple lightweight desktop interface built with Tkinter
+* Detects keyboard key presses using **Quartz**
+* Plays a sound whenever a key is pressed
+* Supports custom audio files
+* Built-in file picker for choosing sounds
+* `.wav` files are recommended for lower playback latency
+* Emergency Stop button to immediately stop the listener and audio
+* Checks for the required macOS Accessibility permission
+* Simple lightweight desktop interface built with Tkinter
 
 ---
 
-##  How It Works
+## How It Works
 
 The application uses a relatively simple pipeline:
 
@@ -51,9 +55,9 @@ and plays the currently selected sound whenever a key-down event is detected.
 
 ---
 
-## 🎵 Custom Sounds
+## Custom Sounds
 
-KeySound FX allows users to select their own audio file through the application.
+KeySound FX allows users to select their own audio file directly through the application.
 
 Click:
 
@@ -65,15 +69,15 @@ and select the audio file you want to use.
 
 Common audio formats such as WAV, MP3, M4A, AIFF, and CAF can be selected.
 
-### Recommended format
+### Recommended Format
 
 **`.wav` is recommended for lower latency.**
 
-For a keyboard sound effect, playback responsiveness is more important than having a highly compressed audio file. WAV files avoid some of the decoding overhead associated with compressed formats.
+For a keyboard sound effect, playback responsiveness is important. WAV files avoid some of the decoding overhead associated with compressed audio formats.
 
 ---
 
-##  macOS Permissions
+## macOS Permissions
 
 Because KeySound FX needs to observe keyboard events, macOS requires the application to have the appropriate privacy permission.
 
@@ -112,7 +116,7 @@ pip uninstall pynput
 
 ---
 
-## Running
+##  Running
 
 Clone the repository and run:
 
@@ -137,9 +141,14 @@ Then:
 ```text
 KeySound-FX/
 │
-├── app.py
+├── src/
+│   └── app.py
+│
 ├── sounds/
 │   └── gun.wav
+│
+├── assets/
+│   └── screenshot.png
 │
 └── README.md
 ```
@@ -152,19 +161,19 @@ The included `gun.wav` is simply the default sound. Users can select another aud
 
 KeySound FX is intentionally a **small and simple desktop application**, so there are several limitations.
 
-### macOS only
+### macOS Only
 
 The application relies on macOS-specific APIs, particularly Quartz Event Services.
 
 It is not currently designed to run on Windows or Linux.
 
-### Requires Accessibility permission
+### Requires Accessibility Permission
 
 macOS privacy protections prevent applications from freely monitoring keyboard input.
 
 The appropriate Accessibility permission must therefore be granted before the application can receive keyboard events.
 
-### Audio playback is intentionally simple
+### Audio Playback Is Intentionally Simple
 
 The application currently uses macOS's `afplay` command to play sounds.
 
@@ -174,7 +183,7 @@ This keeps the implementation simple, but it is not equivalent to using a dedica
 
 Very rapid typing could therefore result in multiple audio processes being created at once.
 
-### No advanced audio controls
+### No Advanced Audio Controls
 
 The application currently does not provide features such as:
 
@@ -187,7 +196,7 @@ The application currently does not provide features such as:
 * Background audio management
 * Audio device selection
 
-### Sound file paths
+### Sound File Paths
 
 The selected custom sound is used from its existing location rather than being imported into the application.
 
@@ -195,7 +204,7 @@ If the original sound file is moved or deleted, it will need to be selected agai
 
 ---
 
-##  Why Quartz?
+## Why Quartz?
 
 This project originally used a cross-platform keyboard listener, but the application is specifically intended for macOS.
 
@@ -229,7 +238,7 @@ The application uses the event tap in **listen-only mode**, meaning it observes 
 
 ---
 
-##  Future Improvements
+## Future Improvements
 
 Some possible improvements for future versions include:
 
@@ -242,11 +251,4 @@ Some possible improvements for future versions include:
 * Audio preview before selecting a file
 * Better error handling for unsupported audio formats
 * Packaging the application as a standalone `.app`
-* Launch-at-login support
-* More polished macOS-native UI
-
----
-
-##  License
-
-This project is a small personal project created for experimentation and learning with macOS desktop development, Quartz, Python, and audio playback.
+* La
